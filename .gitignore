@@ -1,0 +1,27 @@
+# 环境与密钥
+.env
+*.local.bat
+
+# 虚拟环境
+.venv/
+venv/
+
+# 数据与缓存（快照、SQLite、卡表缓存）
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest_tmp/
+.ruff_cache/
+
+# 运行日志
+*.log
+
+# 其它
+.DS_Store
+node_modules/

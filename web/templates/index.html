@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#141A24" />
+  <title>炉石卡组构筑器</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F2B13C'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%2323180A' font-family='sans-serif'%3E炉%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/css/theme.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">炉</div>
+        <div class="brand-text">
+          <strong>炉石卡组构筑器</strong>
+          <span>DECK FORGE</span>
+        </div>
+      </div>
+
+      <div class="topbar-spacer"></div>
+
+      <div class="seg desknav" role="group" aria-label="页面切换">
+        <button data-view="viewMeta" aria-current="true">环境</button>
+        <button data-view="viewBuilder" aria-current="false">组卡</button>
+        <button data-view="viewMine" aria-current="false">我的</button>
+      </div>
+
+      <div class="seg" id="modeSeg" role="group" aria-label="模式切换">
+        <button data-mode="standard" aria-pressed="true">标准</button>
+        <button data-mode="wild" aria-pressed="false">狂野</button>
+      </div>
+
+      <button class="btn primary" id="btnAi" title="AI 教练">AI 教练</button>
+      <div id="healthHint" style="font-size:12px;color:var(--text-faint)"></div>
+    </header>
+
+    <main class="views">
+      <!-- 环境推荐 -->
+      <section class="view active" id="viewMeta">
+        <div class="panel meta-hero">
+          <div>
+            <div class="big" id="metaTitle">天梯环境</div>
+            <div class="sub" id="metaSub">正在读取…</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <select id="metaWindowSel" style="width:auto;min-width:110px"></select>
+            <select id="bucketSel" style="width:auto;min-width:130px"></select>
+            <button class="btn" id="btnRefreshMeta">刷新环境</button>
+          </div>
+        </div>
+        <div class="panel" style="margin-bottom:12px">
+          <div class="row1" style="margin-bottom:6px">
+            <strong id="recommendTitle">推荐上分</strong>
+            <span class="sub" id="recommendSub"></span>
+          </div>
+          <div class="grid-cards" id="metaRecommend"></div>
+        </div>
+        <div class="grid-cards" id="metaDeckList"></div>
+      </section>
+
+      <!-- 组卡器 -->
+      <section class="view" id="viewBuilder">
+        <div class="builder">
+          <aside class="panel filters">
+            <div class="filter-group">
+              <div class="filter-label">职业</div>
+              <select id="classSel"></select>
+            </div>
+            <div class="filter-group">
+              <div class="filter-label">搜索卡名 / 卡面</div>
+              <input type="search" id="qInput" placeholder="如：火球、战吼" />
+            </div>
+            <div class="filter-group">
+              <div class="filter-label">法力值 <span id="costLabel" style="color:var(--gold-bright)">全部</span></div>
+              <input type="range" id="costRange" min="0" max="30" value="30" />
+            </div>
+            <div class="filter-group">
+              <div class="filter-label">关键词</div>
+              <div class="chips" id="keywordChips"></div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-label">稀有度</div>
+              <div class="chips" id="rarityChips"></div>
+            </div>
+            <div class="filter-group" style="margin-bottom:0">
+              <button class="btn ghost" id="btnResetFilter" style="width:100%">重置筛选</button>
+            </div>
+          </aside>
+
+          <section class="panel cardpool-wrap">
+            <div class="cardpool-head">
+              <strong>卡池</strong>
+              <span class="count" id="poolCount">—</span>
+              <div class="topbar-spacer"></div>
+              <select id="sortSel" style="width:auto">
+                <option value="cost">按费用</option>
+                <option value="name">按名称</option>
+                <option value="dust">按合成成本</option>
+              </select>
+            </div>
+            <div class="card-grid" id="cardGrid"></div>
+            <div style="text-align:center;padding:14px 0">
+              <button class="btn" id="btnMore">加载更多</button>
+            </div>
+          </section>
+
+          <aside class="panel deck-panel">
+            <div class="deck-head">
+              <strong>当前卡组</strong>
+              <span class="deck-count" id="deckCount">0/30</span>
+            </div>
+            <div class="curve-wrap">
+              <div class="curve" id="curve"></div>
+            </div>
+            <div class="metric-row" style="font-size:12px;margin-bottom:6px">
+              <span>总尘数 <b id="dustTotal">0</b></span>
+            </div>
+            <div style="display:flex;gap:6px;margin:6px 0">
+              <input type="text" id="deckCodeInput" placeholder="粘贴官方卡组码 AAECA…" />
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:8px">
+              <button class="btn" id="btnImportCode" style="flex:1">导入</button>
+              <button class="btn" id="btnExportCode" style="flex:1">导出卡组码</button>
+            </div>
+            <div id="deckIssues" style="font-size:12px;margin-bottom:6px"></div>
+            <div class="deck-list" id="deckList"></div>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button class="btn ghost" id="btnClearDeck" style="flex:1">清空</button>
+              <button class="btn primary" id="btnAiSuggest" style="flex:1">AI 优化</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- 我的卡组 -->
+      <section class="view" id="viewMine">
+        <div class="panel" style="padding:14px;margin-bottom:12px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input type="text" id="deckNameInput" placeholder="给这套卡组起个名字" style="flex:2;min-width:160px" />
+            <button class="btn primary" id="btnSaveDeck">保存当前卡组</button>
+          </div>
+        </div>
+        <h2 class="section-title">本地保存的卡组 <small id="mineCount"></small></h2>
+        <div class="grid-cards" id="mineList"></div>
+      </section>
+    </main>
+
+    <nav class="tabbar">
+      <nav>
+        <button data-view="viewMeta" aria-current="true"><span class="ico">◎</span>环境</button>
+        <button data-view="viewBuilder"><span class="ico">▤</span>组卡</button>
+        <button data-view="viewMine"><span class="ico">❤</span>我的</button>
+      </nav>
+    </nav>
+  </div>
+
+  <div class="scrim" id="scrim"></div>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <strong>AI 教练</strong>
+      <button class="btn ghost" id="btnCloseDrawer">关闭</button>
+    </div>
+    <div class="drawer-body">
+      <div class="filter-group">
+        <div class="filter-label">我想让这套卡组…</div>
+        <div class="chips" id="intentChips"></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">补充说明（可选）</div>
+        <input type="text" id="intentText" placeholder="例如：我缺少核心橙卡，想要便宜版" />
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">换卡对象（在组卡器中点击卡组里的卡可选中）</div>
+        <div id="swapTarget" style="font-size:13px;color:var(--text-dim)">未选择</div>
+      </div>
+      <div class="ai-actions">
+        <button class="btn primary" id="btnBuild">AI 自动构筑</button>
+        <button class="btn" id="btnSwap">换卡建议</button>
+        <button class="btn ghost" id="btnReview">点评这套</button>
+      </div>
+      <div class="filter-label">输出</div>
+      <div class="stream-box" id="aiOut">准备好了，选个方向我就开始。<br><br>提示：AI 输出会在本地做合法性校验，不会推荐卡池之外的卡。</div>
+    </div>
+    <div class="drawer-foot">
+      <button class="btn primary" id="btnApplyDeck" style="width:100%" disabled>采纳这套卡组</button>
+    </div>
+  </aside>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

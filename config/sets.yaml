@@ -1,0 +1,102 @@
+# 模式轮换配置 —— 可人工维护（官方接口不提供标准/狂野轮换列表）
+#
+# 最近一次校准：2026-10-28
+# 校准方式（实测，非凭印象）：抓取 hearthstone-decks.net 上 2026-10-23 ~ 10-26
+# 发布的三套"标准模式"传说卡组，用本地卡组码解析器还原后统计所用系列：
+#   Raza Demon Hunter #1 / Egg Priest #38 / Pure Paladin #150
+#   -> 只含 CORE、THE_LOST_CITY、EMERALD_DREAM、TIME_TRAVEL、CATACLYSM、
+#      ESCAPEFROM_VIOLET_HOLD、BE、EVENT
+# 作为对照：2025-01 的 Cycle Rogue #60 还在使用 WHIZBANGS_WORKSHOP / TITANS /
+#   BATTLE_OF_THE_BANDS / WILD_WEST / SPACE / ISLAND_VACATION，这些现已退环境。
+# 若官方再次轮换或有误判，直接改下面的 standard 列表即可，存粹数据配置，与代码解耦。
+
+version: 2026.10.28
+
+# 系列中文名（已与游戏内截图核对：2026-10 当前标准六大扩展）
+# 用途：前端系列筛选器与卡组详情展示
+set_names:
+  CORE: 核心系列
+  CORE_HIDDEN: 核心系列（隐藏副本）
+  BE: 黑暗帝国
+  ESCAPEFROM_VIOLET_HOLD: 紫罗兰监狱
+  CATACLYSM: 大地的裂变
+  TIME_TRAVEL: 时间流
+  THE_LOST_CITY: 安戈洛龟途
+  EMERALD_DREAM: 翡翠梦境
+  EVENT: 活动赠送
+  SPACE: 深空星舰
+  ISLAND_VACATION: 度假岛风云
+  WONDERS: 奇迹之书
+  WHIZBANGS_WORKSHOP: 威兹班的工坊
+  WILD_WEST: 决战荒芜之地
+  BATTLE_OF_THE_BANDS: 传奇音乐节
+  TITANS: 泰坦诸神
+  EXPERT1: 经典
+  LEGACY: 荣誉室
+  NAXX: 纳克萨玛斯的诅咒
+  GVG: 地精大战侏儒
+  OG: 上古之神的低语
+  TGT: 冠军的试炼
+  LOE: 探险者协会
+  BRM: 黑石山的火焰
+  KARA: 卡拉赞之夜
+  GANGS: 龙争虎斗加基森
+  UNGORO: 勇闯安戈洛
+  KFT: 冰封王座的骑士
+  ULDUM: 奥丹姆奇兵
+  DALARAN: 暗影崛起
+  BOOMSDAY: 砰砰计划
+  TROLL: 拉斯塔哈的大乱斗
+  DRAGONS: 巨龙降临
+  YEAR_OF_THE_DRAGON: 巨龙年纪念
+  BLACK_TEMPLE: 外域的灰烬
+  SCHOLOMANCE: 通灵学园
+  DARKMOON_FAIRE: 疯狂的暗月马戏团
+  THE_BARRENS: 贫瘠之地的锤炼
+  STORMWIND: 暴风城下的集结
+  ALTERAC_VALLEY: 奥特兰克的决裂
+  RETURN_OF_THE_LICH_KING: 巫妖王的进军
+  THE_SUNKEN_CITY: 探寻沉没之城
+  PATH_OF_ARTHAS: 阿尔萨斯之路
+  DEMON_HUNTER_INITIATE: 恶魔猎手新兵
+  ICECROWN: 冰封王座的骑士
+
+
+# 无法用于构筑的系列：从卡池中彻底剔除
+# 注意：CORE_HIDDEN 不能整体剔除 —— 其中 654 张标记为可收集，
+# 且部分是当前唯一可用版本（如「暗影步」只存在于该系列），故列入标准。
+excluded:
+  - HERO_SKINS            # 英雄皮肤
+  - TB                    # 乱斗
+  - TAVERNS_OF_TIME
+  - BATTLEGROUNDS         # 酒馆战棋
+  - LETTUCE               # 佣兵战纪
+  - MERCENARIES
+  - MISSIONS
+  - PET
+  - TUTORIAL
+  - CREDITS
+  - SYSTEM
+  - VANILLA               # 基础系列的旧版本（芯核家族已取代）
+
+# 当前标准模式可用系列（改动这一项即可跟随官方轮换）
+standard:
+  - CORE
+  - CORE_HIDDEN           # 核心系列的隐藏副本：多数为当前唯一可用版本，必须计入标准
+  - CATACLYSM
+  - ESCAPEFROM_VIOLET_HOLD
+  - BE
+  - TIME_TRAVEL
+  - EMERALD_DREAM
+  - THE_LOST_CITY
+  - EVENT                 # 活动赠送卡，实测出现在标准卡组中
+
+# 已进入狂野的近年系列（保留注释便于回溯，wild 列表本身不需要维护）
+# rotated_out_2026:
+#   - SPACE
+#   - ISLAND_VACATION
+#   - WONDERS
+#   - WHIZBANGS_WORKSHOP
+#   - WILD_WEST
+#   - BATTLE_OF_THE_BANDS
+#   - TITANS

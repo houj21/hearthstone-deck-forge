@@ -1,0 +1,57 @@
+{
+  "MAGE": {
+    "dbf_id": 637,
+    "card_id": "HERO_08",
+    "name": "吉安娜·普罗德摩尔"
+  },
+  "WARRIOR": {
+    "dbf_id": 7,
+    "card_id": "HERO_01",
+    "name": "加尔鲁什·地狱咆哮"
+  },
+  "WARLOCK": {
+    "dbf_id": 893,
+    "card_id": "HERO_07",
+    "name": "古尔丹"
+  },
+  "PRIEST": {
+    "dbf_id": 813,
+    "card_id": "HERO_09",
+    "name": "安度因·乌瑞恩"
+  },
+  "PALADIN": {
+    "dbf_id": 671,
+    "card_id": "HERO_04",
+    "name": "乌瑟尔·光明使者"
+  },
+  "HUNTER": {
+    "dbf_id": 31,
+    "card_id": "HERO_05",
+    "name": "雷克萨"
+  },
+  "ROGUE": {
+    "dbf_id": 930,
+    "card_id": "HERO_03",
+    "name": "瓦莉拉·萨古纳尔"
+  },
+  "DRUID": {
+    "dbf_id": 274,
+    "card_id": "HERO_06",
+    "name": "玛法里奥·怒风"
+  },
+  "SHAMAN": {
+    "dbf_id": 1066,
+    "card_id": "HERO_02",
+    "name": "萨尔"
+  },
+  "DEMONHUNTER": {
+    "dbf_id": 56550,
+    "card_id": "HERO_10",
+    "name": "伊利丹·怒风"
+  },
+  "DEATHKNIGHT": {
+    "dbf_id": 78065,
+    "card_id": "HERO_11",
+    "name": "巫妖王"
+  }
+}

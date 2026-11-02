@@ -1,0 +1,194 @@
+[
+ {
+  "id": 594,
+  "name": "Burn Mage",
+  "player_class": 4,
+  "player_class_name": "MAGE",
+  "url": "/archetypes/594/burn-mage",
+  "standard_ccp_signature_core": {
+   "as_of": "2026-10-23T16:06:19.807Z",
+   "format": 2,
+   "components": [
+    117535,
+    69501,
+    115655,
+    123419,
+    123351,
+    111365,
+    123665,
+    120971
+   ],
+   "components_8": [
+    117535,
+    69501,
+    115655,
+    123419,
+    123351,
+    111365,
+    123665,
+    120971
+   ]
+  },
+  "wild_ccp_signature_core": null
+ },
+ {
+  "id": 866,
+  "name": "Leyline Mage",
+  "player_class": 4,
+  "player_class_name": "MAGE",
+  "url": "/archetypes/866/leyline-mage",
+  "standard_ccp_signature_core": {
+   "as_of": "2026-10-23T16:06:19.807Z",
+   "format": 2,
+   "components": [
+    123496,
+    123507,
+    123508,
+    123514,
+    123515,
+    123495,
+    123504,
+    123692
+   ],
+   "components_8": [
+    123496,
+    123507,
+    123508,
+    123514,
+    123515,
+    123495,
+    123504,
+    123692
+   ]
+  },
+  "wild_ccp_signature_core": null
+ },
+ {
+  "id": 872,
+  "name": "Contraband Mage",
+  "player_class": 4,
+  "player_class_name": "MAGE",
+  "url": "/archetypes/872/contraband-mage",
+  "standard_ccp_signature_core": {
+   "as_of": "2026-10-23T16:06:19.807Z",
+   "format": 2,
+   "components": [
+    118265,
+    124074,
+    126109,
+    120971,
+    123692,
+    122632,
+    121174,
+    69655
+   ],
+   "components_8": [
+    118265,
+    124074,
+    126109,
+    120971,
+    123692,
+    122632,
+    121174,
+    69655
+   ]
+  },
+  "wild_ccp_signature_core": null
+ },
+ {
+  "id": 881,
+  "name": "Coin Rogue",
+  "player_class": 7,
+  "player_class_name": "ROGUE",
+  "url": "/archetypes/881/coin-rogue",
+  "standard_ccp_signature_core": {
+   "as_of": "2026-10-23T16:06:19.807Z",
+   "format": 2,
+   "components": [
+    125988,
+    120805,
+    123077,
+    132547,
+    125989,
+    126097,
+    102745,
+    123060
+   ],
+   "components_8": [
+    125988,
+    120805,
+    123077,
+    132547,
+    125989,
+    126097,
+    102745,
+    123060
+   ]
+  },
+  "wild_ccp_signature_core": null
+ },
+ {
+  "id": 887,
+  "name": "BBB Control Death Knight",
+  "player_class": 1,
+  "player_class_name": "DEATHKNIGHT",
+  "url": "/archetypes/887/bbb-control-death-knight",
+  "standard_ccp_signature_core": {
+   "as_of": "2026-10-23T16:06:19.807Z",
+   "format": 2,
+   "components": [
+    120985,
+    114301,
+    111320,
+    114966,
+    130315,
+    128132,
+    114305,
+    130341
+   ],
+   "components_8": [
+    120985,
+    114301,
+    111320,
+    114966,
+    130315,
+    128132,
+    114305,
+    130341
+   ]
+  },
+  "wild_ccp_signature_core": null
+ },
+ {
+  "id": 663,
+  "name": "Handbuff Death Knight",
+  "player_class": 1,
+  "player_class_name": "DEATHKNIGHT",
+  "url": "/archetypes/663/handbuff-death-knight",
+  "standard_ccp_signature_core": {
+   "as_of": "2026-10-23T16:06:19.807Z",
+   "format": 2,
+   "components": [
+    131236,
+    130565,
+    122759,
+    123547,
+    111321,
+    122771,
+    114967,
+    122766
+   ],
+   "components_8": [
+    131236,
+    130565,
+    122759,
+    123547,
+    111321,
+    122771,
+    114967,
+    122766
+   ]
+  },
+  "wild_ccp_signature_core": null
+ }
+]

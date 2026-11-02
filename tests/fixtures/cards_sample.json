@@ -1,0 +1,18 @@
+[
+  {"dbfId": 1001, "id": "CORE_FIREBALL", "name": "火球术", "set": "CORE", "type": "SPELL", "cost": 4, "cardClass": "MAGE", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": "造成6点伤害。"},
+  {"dbfId": 1002, "id": "CORE_POLYMORPH", "name": "变形术", "set": "CORE", "type": "SPELL", "cost": 4, "cardClass": "MAGE", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": "将一个随从变形成1/1的绵羊。"},
+  {"dbfId": 1003, "id": "CORE_WATER_ELEMENTAL", "name": "水元素", "set": "CORE", "type": "MINION", "cost": 4, "attack": 3, "health": 6, "cardClass": "MAGE", "rarity": "COMMON", "collectible": true, "mechanics": ["FREEZE"], "text": "<b>冻结</b>任何受到该随从伤害的角色。"},
+  {"dbfId": 1004, "id": "CORE_CHILLWIND_YETI", "name": "冰风雪人", "set": "CORE", "type": "MINION", "cost": 4, "attack": 4, "health": 5, "cardClass": "NEUTRAL", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": ""},
+  {"dbfId": 1005, "id": "CORE_ARCHMAGE", "name": "大法师安东尼达斯", "set": "CORE", "type": "MINION", "cost": 7, "attack": 5, "health": 7, "cardClass": "MAGE", "rarity": "LEGENDARY", "collectible": true, "mechanics": [], "text": "每当你施放一个法术，将一张“火球术”置入你的手牌。"},
+  {"dbfId": 1006, "id": "CORE_AZERITE", "name": "虚空之光", "set": "CORE", "type": "SPELL", "cost": 2, "cardClass": "PRIEST", "rarity": "RARE", "collectible": true, "mechanics": ["LIFESTEAL"], "text": "<b>吸血</b>，对一个随从造成3点伤害。"},
+  {"dbfId": 1007, "id": "EMERALD_TAURUS", "name": "翡翠巨兽", "set": "EMERALD_DREAM", "type": "MINION", "cost": 6, "attack": 5, "health": 6, "cardClass": "DRUID", "rarity": "EPIC", "collectible": true, "mechanics": ["TAUNT", "BATTLECRY"], "text": "<b>嘲讽</b>，<b>战吼：</b>抽一张牌。"},
+  {"dbfId": 1008, "id": "EMERALD_MULTI", "name": "跨界学者", "set": "EMERALD_DREAM", "type": "MINION", "cost": 3, "attack": 2, "health": 3, "classes": ["MAGE", "DRUID"], "cardClass": "NEUTRAL", "rarity": "RARE", "collectible": true, "mechanics": ["BATTLECRY"], "text": "<b>战吼：</b>发现一张法术牌。"},
+  {"dbfId": 1009, "id": "SPACE_DK", "name": "血霜术士", "set": "SPACE", "type": "MINION", "cost": 4, "attack": 3, "health": 4, "cardClass": "DEATHKNIGHT", "rarity": "RARE", "collectible": true, "mechanics": ["BATTLECRY"], "runeCost": {"blood": 2, "frost": 0, "unholy": 0}, "text": "<b>战吼：</b>造成2点伤害。"},
+  {"dbfId": 1010, "id": "EXPERT1_ANCIENT", "name": "远古雕文", "set": "EXPERT1", "type": "SPELL", "cost": 2, "cardClass": "DRUID", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": "获得一张临时的法术牌。"},
+  {"dbfId": 1011, "id": "LEGACY_FIREBALL", "name": "火球术", "set": "LEGACY", "type": "SPELL", "cost": 4, "cardClass": "MAGE", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": "造成6点伤害。"},
+  {"dbfId": 1012, "id": "HERO_JAINA", "name": "吉安娜·普罗德摩尔", "set": "HERO_SKINS", "type": "HERO", "cost": 0, "cardClass": "MAGE", "rarity": "LEGENDARY", "collectible": true, "mechanics": [], "text": ""},
+  {"dbfId": 1013, "id": "CORE_INTERNAL", "name": "隐藏副本卡", "set": "CORE_HIDDEN", "type": "SPELL", "cost": 1, "cardClass": "MAGE", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": "这是一张只有隐藏系列里才有的可用卡。"},
+  {"dbfId": 1016, "id": "CORE_HIDDEN_FIREBALL", "name": "火球术", "set": "CORE_HIDDEN", "type": "SPELL", "cost": 4, "cardClass": "MAGE", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": "造成6点伤害。"},
+  {"dbfId": 1014, "id": "TOKEN_SHEEP", "name": "绵羊", "set": "CORE", "type": "MINION", "cost": 1, "attack": 1, "health": 1, "cardClass": "NEUTRAL", "rarity": "COMMON", "mechanics": [], "text": ""},
+  {"dbfId": 1015, "id": "TB_FUN", "name": "乱斗玩意", "set": "TB", "type": "SPELL", "cost": 3, "cardClass": "MAGE", "rarity": "COMMON", "collectible": true, "mechanics": [], "text": ""}
+]

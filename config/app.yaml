@@ -1,0 +1,74 @@
+# 应用配置（端口/路径/缓存/分段档位/数据源开关）
+# 修改后需重启服务生效
+
+server:
+  host: 0.0.0.0        # 手机需在同 WiFi 下访问电脑局域网 IP
+  port: 8765           # 本机 8899 已被其它项目占用，故用 8765
+  title: "炉石卡组构筑器"
+  version: "0.1.0"
+
+paths:
+  # 相对于项目根目录
+  data_dir: data
+  db_file: data/app.db
+  card_cache: data/cards.zhCN.json
+
+cardpool:
+  # 中文卡表源（官方 HearthstoneJSON 镜像，实测可达）
+  source_url: https://api.hearthstonejson.com/v1/latest/zhCN/cards.collectible.json
+  full_source_url: https://api.hearthstonejson.com/v1/latest/zhCN/cards.json
+  locale: zhCN
+  # 卡表缓存有效期（小时），过期后启动时增量刷新
+  cache_hours: 24
+
+meta:
+  # 环境数据快照有效期（分钟），超时后界面提示可刷新
+  ttl_minutes: 180
+  per_source_timeout: 30      # 单源超时（秒）
+  total_timeout: 120          # 一次刷新总上限（秒）
+  max_concurrency: 2          # 对外站点限速：并发上限
+  request_interval: 1.0       # 同一站点请求间隔（秒）
+  # 实测（2026-10-28）：
+  # - hsreplay 用真实浏览器内核可绕过 Cloudflare，分析接口免费开放（主源）
+  # - hsguru / nga 本机网络层不可达（浏览器内核同样超时），按用户决定停用
+  providers:
+    hsreplay: { enabled: true, weight: 1.0, via: browser }
+    hsguru: { enabled: false, weight: 0.0, via: browser }
+    nga: { enabled: false, weight: 0.0, via: browser }
+    hearthstone_decks: { enabled: false, weight: 0.0, via: http }   # 预留降级源
+
+recommend:
+  min_sample_size: 200        # 低于该样本量不进推荐榜（避免噪声）
+  shrink_k: 500               # 贝叶斯收缩系数：样本越小越向均值回归，抑制噪声
+  max_per_class: 2            # 同一职业最多推荐几套（保证多样性）
+  top_n: 8                    # 推荐榜默认条数
+  trend_bonus: 0.6            # 胜率上升的加分（百分点）
+  strong_win_rate: 55.0       # 达到该胜率算强势卡组
+  # 天梯分段档位（推荐排序按档位分别计算）
+  buckets:
+    - { id: TOP1000_LEGEND,   label: "前千传说", order: 1 }
+    - { id: LEGEND,           label: "传说",     order: 2 }
+    - { id: DIAMOND_TO_L5,    label: "钻石~传说5", order: 3 }
+    - { id: GOLD_TO_PLATINUM, label: "黄金~铂金", order: 4 }
+    - { id: BRONZE_TO_SILVER, label: "青铜~白银", order: 5 }
+    - { id: CASUAL,           label: "休闲/新手", order: 6 }
+
+ai:
+  # 凭证与模型从环境变量 / .env 读取（见 .env.example），此处只放行为参数
+  stream: true                # 必须流式：网关长文本响应可达 200-330 秒
+  connect_timeout: 30
+  read_timeout: 360
+  max_retry: 2
+  # 每次请求带给模型的候选卡规模（控制 token 与时延）
+  max_candidates: 120
+  temperature: 0.7
+  # 校验失败后最多回喂重试几次，仍失败则走规则兜底
+  max_repair: 2
+  # 构筑意图（前端 chips 与提示词共用）
+  intents:
+    - { id: faster,       label: "更快（抢血/铺场）" }
+    - { id: greedier,     label: "更贪（后期/大牌）" }
+    - { id: anti_aggro,   label: "针对快攻（解场/嘲讽）" }
+    - { id: anti_control, label: "针对控制（续航/斩杀）" }
+    - { id: cheaper,      label: "更便宜（少橙卡）" }
+    - { id: combo,        label: "强化斩杀" }
